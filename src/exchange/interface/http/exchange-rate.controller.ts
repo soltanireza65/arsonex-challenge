@@ -13,7 +13,7 @@ export class ExchangeRateController {
 
   @Get('get-all-rates')
   findAll() {
-    throw new Error('Method not implemented.');
+    return this.exchangeRateService.findAll();
   }
 
   @ApiOperation({ summary: 'Rate IRR to USD' })
