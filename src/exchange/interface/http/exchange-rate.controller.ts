@@ -1,11 +1,11 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { RateIRRToUSDQuery } from 'exchange/application/queries/rate/rate-irr-to-usd.query';
 import { ExchangeRateService } from 'exchange/application/services/exchange-rate.service';
 import { RateCryptoTyCrypto } from './dto/rate/rate-crypto-to-crypto.dto';
 import { RateEURToCrypto } from './dto/rate/rate-eur-to-crypto.dto';
 import { RateIRRToUSD } from './dto/rate/rate-irr-to-usd.dto';
 import { RateUSDToFiat } from './dto/rate/rate-usd-to-fiat.dto';
-import { RateIRRToUSDQuery } from 'exchange/application/queries/rate/rate-irr-to-usd.query';
 
 @ApiTags('exchange-rate')
 @Controller('exchange/rate')
@@ -28,20 +28,20 @@ export class ExchangeRateController {
   @ApiResponse({ status: 200, description: 'The conversion was successful.' })
   @Get('usd-to-other')
   async rateUSDToOther(@Query() args: RateUSDToFiat) {
-    throw new Error('Method not implemented.');
+    return this.exchangeRateService.rateUSDToOther(args);
   }
 
   @ApiOperation({ summary: 'Rate Crypto to Crypto' })
   @ApiResponse({ status: 200, description: 'The conversion was successful.' })
   @Get('crypto-to-crypto')
   async rateCryptoToCrypto(@Query() args: RateCryptoTyCrypto) {
-    throw new Error('Method not implemented.');
+    return this.exchangeRateService.rateCryptoToCrypto(args);
   }
 
   @ApiOperation({ summary: 'Rate EUR to Crypto' })
   @ApiResponse({ status: 200, description: 'The conversion was successful.' })
   @Get('eur-to-crypto')
   async rateEURToCrypto(@Query() args: RateEURToCrypto) {
-    throw new Error('Method not implemented.');
+    return this.exchangeRateService.rateEURToCrypto(args);
   }
 }
