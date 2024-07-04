@@ -3,6 +3,10 @@ import {
   ProviderBProvider,
   ProviderCProvider,
 } from './providers/provider';
+import { ConvertCryptoTyCryptoQueryHandler } from './queries/convert/convert-crypto-to-crypto.query-handler';
+import { ConvertEURToCryptoQueryHandler } from './queries/convert/convert-eur-to-crypto.query-handler';
+import { ConvertIRRToUSDQueryHandler } from './queries/convert/convert-irr-to-usd.query-handler';
+import { ConvertUSDToFiatQueryHandler } from './queries/convert/convert-usd-to-fiat.query-handler';
 import { GetAllRatesQueryHandler } from './queries/rate/get-all-rates.query-handler';
 import { RateCryptoTyCryptoQueryHandler } from './queries/rate/rate-crypto-to-crypto.query-handler';
 import { RateEURToCryptoQueryHandler } from './queries/rate/rate-eur-to-crypto.query-handler';
@@ -22,11 +26,17 @@ const ExchangeRateProviders: any[] = [
 ];
 
 const ExchangeRateQueryHandlers: any[] = [
+  // Rate
   GetAllRatesQueryHandler,
   RateIRRToUSDQueryHandler,
   RateUSDToFiatQueryHandler,
   RateCryptoTyCryptoQueryHandler,
   RateEURToCryptoQueryHandler,
+  // Convert
+  ConvertIRRToUSDQueryHandler,
+  ConvertUSDToFiatQueryHandler,
+  ConvertCryptoTyCryptoQueryHandler,
+  ConvertEURToCryptoQueryHandler,
 ];
 const ExchangeRateCommandHandlers: any[] = [];
 const ExchangeRateEventHandlers: any[] = [];
