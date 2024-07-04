@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { ExchangeRateRepository } from 'exchange/application/ports/exchange-rate.repository';
 import { ProviderAProvider } from 'exchange/application/providers/provider';
@@ -8,6 +9,7 @@ import { ConvertIRRToUSDQuery } from './convert-irr-to-usd.query';
 export class ConvertIRRToUSDQueryHandler
   implements IQueryHandler<ConvertIRRToUSDQuery, number>
 {
+  private readonly logger = new Logger(ConvertIRRToUSDQueryHandler.name);
   constructor(
     private readonly exchangeRateProvider: ProviderAProvider,
     private readonly exchangeRateFactory: ExchangeRateFactory,
@@ -24,7 +26,19 @@ export class ConvertIRRToUSDQueryHandler
         },
       });
 
-      return amount * res.rate;
-    } catch (error) {}
+      if (res) {
+        return amount * res.rate;
+      }
+      const rate = await this.exchangeRateProvider.calculate('IRR', 'USD');
+
+      await this.exchangeRateRepository.upsert(
+        this.exchangeRateFactory.create('IRR', 'USD', rate),
+      );
+
+      return amount * rate;
+    } catch (error) {
+      this.logger.error(error);
+      // TODO: handle error
+    }
   }
 }

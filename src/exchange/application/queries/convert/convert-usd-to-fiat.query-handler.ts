@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { ExchangeRateRepository } from 'exchange/application/ports/exchange-rate.repository';
 import { ProviderBProvider } from 'exchange/application/providers/provider';
@@ -8,9 +9,10 @@ import { ConvertUSDToFiatQuery } from './convert-usd-to-fiat.query';
 export class ConvertUSDToFiatQueryHandler
   implements IQueryHandler<ConvertUSDToFiatQuery, number>
 {
+  private readonly logger = new Logger(ConvertUSDToFiatQueryHandler.name);
+
   constructor(
     private readonly exchangeRateProvider: ProviderBProvider,
-
     private readonly exchangeRateFactory: ExchangeRateFactory,
     private readonly exchangeRateRepository: ExchangeRateRepository,
   ) {}
@@ -25,8 +27,9 @@ export class ConvertUSDToFiatQueryHandler
         },
       });
 
-      return amount * res.rate;
-    } catch (error) {
+      if (res) {
+        return amount * res.rate;
+      }
       const rate = await this.exchangeRateProvider.calculate('USD', to);
 
       await this.exchangeRateRepository.upsert(
@@ -34,6 +37,9 @@ export class ConvertUSDToFiatQueryHandler
       );
 
       return amount * rate;
+    } catch (error) {
+      this.logger.error(error);
+      // TODO: handle error
     }
   }
 }
