@@ -1,3 +1,5 @@
-export interface ApplicationBootstrapOptions {
-  driver: 'typeorm' | 'in-memory';
+import { TDriver } from 'common/types/driver.type';
+
+export interface IApplicationBootstrapOptions {
+  driver: TDriver;
 }
