@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { GetAllRatesQuery } from './get-all-rates.query';
-import { ExchangeRate } from 'exchange/domain/exchange-rate';
 import { ExchangeRateRepository } from 'exchange/application/ports/exchange-rate.repository';
+import { ExchangeRate } from 'exchange/domain/exchange-rate';
+import { GetAllRatesQuery } from './get-all-rates.query';
 
 @QueryHandler(GetAllRatesQuery)
 export class GetAllRatesQueryHandler
