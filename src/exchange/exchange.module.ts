@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ExchangeService } from './application/services/exchange.service';
-import { ExchangeController } from './interface/http/exchange.controller';
+import { ExchangeRateController } from './interface/http/exchange-rate.controller';
+import { ExchangeConvertionController } from './interface/http/exchange-convert.controller';
+import { ExchangeConvertService } from './application/services/exchange-convert.service';
+import { ExchangeRateService } from './application/services/exchange-rate.service';
 
 @Module({
-  controllers: [ExchangeController],
-  providers: [ExchangeService],
+  controllers: [ExchangeRateController, ExchangeConvertionController],
+  providers: [ExchangeConvertService, ExchangeRateService],
 })
 export class ExchangeModule {}
