@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ApplicationBootstrapOptions } from 'common/interfaces/application-bootstrap-option.interface';
+import { IApplicationBootstrapOptions } from 'common/interfaces/application-bootstrap-option.interface';
 import * as Joi from 'joi';
 
 @Module({})
 export class CoreModule {
-  static forRoot(options: ApplicationBootstrapOptions) {
+  static forRoot(options: IApplicationBootstrapOptions) {
     const staticImports = [
       ConfigModule.forRoot({
         isGlobal: true,
