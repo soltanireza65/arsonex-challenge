@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { ExchangeRateRepository } from 'exchange/application/ports/exchange-rate.repository';
 import { ProviderCProvider } from 'exchange/application/providers/provider';
@@ -8,6 +9,8 @@ import { RateEURToCryptoQuery } from './rate-eur-to-crypto.query';
 export class RateEURToCryptoQueryHandler
   implements IQueryHandler<RateEURToCryptoQuery, number>
 {
+  private readonly logger = new Logger(RateEURToCryptoQueryHandler.name);
+
   constructor(
     private readonly exchangeRateProvider: ProviderCProvider,
 
@@ -18,12 +21,17 @@ export class RateEURToCryptoQueryHandler
   async execute(query: RateEURToCryptoQuery): Promise<number> {
     const { to } = query;
 
-    const rate = await this.exchangeRateProvider.calculate('EUR', to);
+    try {
+      const rate = await this.exchangeRateProvider.calculate('EUR', to);
 
-    await this.exchangeRateRepository.upsert(
-      this.exchangeRateFactory.create('EUR', to, rate),
-    );
+      await this.exchangeRateRepository.upsert(
+        this.exchangeRateFactory.create('EUR', to, rate),
+      );
 
-    return rate;
+      return rate;
+    } catch (error) {
+      this.logger.error(error);
+      // TODO: handle error
+    }
   }
 }
