@@ -1,9 +1,24 @@
 import { Module } from '@nestjs/common';
 import { ExchangeModule } from './exchange/exchange.module';
+import { IApplicationBootstrapOptions } from 'common/interfaces/application-bootstrap-option.interface';
+import { CoreModule } from 'core/core.module';
+import { ExchangeRateInfrastructureModule } from 'exchange/infrastructure/exchange-rate-infrastructure.module';
 
 @Module({
   imports: [ExchangeModule],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  static register(options: IApplicationBootstrapOptions) {
+    return {
+      module: AppModule,
+      imports: [
+        CoreModule.forRoot(options),
+        ExchangeModule.withInfrastructure(
+          ExchangeRateInfrastructureModule.use(options.driver),
+        ),
+      ],
+    };
+  }
+}
