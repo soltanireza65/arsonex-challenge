@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateExchangeDto } from './dto/create-exchange.dto';
-import { UpdateExchangeDto } from './dto/update-exchange.dto';
+import { CreateExchangeDto } from '../../interface/http/dto/create-exchange.dto';
+import { UpdateExchangeDto } from '../../interface/http/dto/update-exchange.dto';
 
 @Injectable()
 export class ExchangeService {
