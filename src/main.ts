@@ -7,7 +7,7 @@ import { setupSwagger } from 'common/utils/swagger.utils';
 
 async function bootstrap() {
   const app = await NestFactory.create(
-    AppModule.register({ driver: 'in-memory' }),
+    AppModule.register({ driver: 'typeorm' }),
   );
 
 
@@ -19,7 +19,7 @@ async function bootstrap() {
   app.useGlobalPipes();
 
   app.useGlobalFilters(new AllExceptionsFilter());
-  
+
   await app.listen(PORT);
 }
 bootstrap();

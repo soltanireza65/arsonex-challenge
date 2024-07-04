@@ -1,0 +1,27 @@
+services:
+  exchange:
+    build:
+      context: .
+      target: development
+    command: npm run start:dev exchange
+    depends_on:
+      - postgres
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '8000:8000'
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - 'pg_data:/var/lib/postgresql/data'
+    ports:
+      - '54321:5432'
+
+volumes:
+  pg_data:
