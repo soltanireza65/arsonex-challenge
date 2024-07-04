@@ -5,6 +5,7 @@ import { RateCryptoTyCrypto } from './dto/rate/rate-crypto-to-crypto.dto';
 import { RateEURToCrypto } from './dto/rate/rate-eur-to-crypto.dto';
 import { RateIRRToUSD } from './dto/rate/rate-irr-to-usd.dto';
 import { RateUSDToFiat } from './dto/rate/rate-usd-to-fiat.dto';
+import { RateIRRToUSDQuery } from 'exchange/application/queries/rate/rate-irr-to-usd.query';
 
 @ApiTags('exchange-rate')
 @Controller('exchange/rate')
@@ -20,7 +21,7 @@ export class ExchangeRateController {
   @ApiResponse({ status: 200, description: 'The conversion was successful.' })
   @Get('irr-to-usd')
   async rateIRRToUSD(@Query() args: RateIRRToUSD) {
-    throw new Error('Method not implemented.');
+    return this.exchangeRateService.rateIRRToUSD(new RateIRRToUSDQuery());
   }
 
   @ApiOperation({ summary: 'Rate USD to other Fiat currencies' })

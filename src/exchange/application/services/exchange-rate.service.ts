@@ -11,7 +11,7 @@ export class ExchangeRateService {
     return this.queryBus.execute(new GetAllRatesQuery());
   }
 
-  async rateIRRToUSD() {
+  async rateIRRToUSD(query: RateIRRToUSDQuery): Promise<number> {
     return this.queryBus.execute(new RateIRRToUSDQuery());
   }
 
