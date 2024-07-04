@@ -1,5 +1,5 @@
+import { ExchangeRateRepository } from '@/exchange/application/ports/exchange-rate.repository';
 import { Module } from '@nestjs/common';
-import { ExchangeRateRepository } from 'exchange/application/ports/exchange-rate.repository';
 import { InMemoryExchangeRateRepository } from './repositories/exchange-rate.repository';
 
 @Module({

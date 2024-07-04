@@ -1,4 +1,4 @@
-import { ExchangeRate } from 'exchange/domain/exchange-rate';
+import { ExchangeRate } from '@/exchange/domain/exchange-rate';
 
 export abstract class ExchangeRateRepository {
   abstract findAll(): Promise<ExchangeRate[]>;

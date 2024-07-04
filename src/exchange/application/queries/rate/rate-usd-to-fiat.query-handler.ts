@@ -1,8 +1,8 @@
+import { ExchangeRateRepository } from '@/exchange/application/ports/exchange-rate.repository';
+import { ProviderBProvider } from '@/exchange/application/providers/provider';
+import { ExchangeRateFactory } from '@/exchange/domain/factories/exchange-rate.factory';
 import { Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { ExchangeRateRepository } from 'exchange/application/ports/exchange-rate.repository';
-import { ProviderBProvider } from 'exchange/application/providers/provider';
-import { ExchangeRateFactory } from 'exchange/domain/factories/exchange-rate.factory';
 import { RateUSDToFiatQuery } from './rate-usd-to-fiat.query';
 
 @QueryHandler(RateUSDToFiatQuery)

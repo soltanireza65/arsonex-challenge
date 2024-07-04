@@ -1,9 +1,9 @@
+import { ExchangeRateRepository } from '@/exchange/application/ports/exchange-rate.repository';
+import { ExchangeRate } from '@/exchange/domain/exchange-rate';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ExchangeRateRepository } from 'exchange/application/ports/exchange-rate.repository';
-import { ExchangeRateEntity } from '../entities/exchange-rate.entity';
 import { FindOneOptions, Repository } from 'typeorm';
-import { ExchangeRate } from 'exchange/domain/exchange-rate';
+import { ExchangeRateEntity } from '../entities/exchange-rate.entity';
 import { ExchangeRateMapper } from '../mappers/exchange-rate.mapper';
 
 @Injectable()

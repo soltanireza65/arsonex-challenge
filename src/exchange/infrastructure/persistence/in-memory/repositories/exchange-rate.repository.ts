@@ -1,7 +1,7 @@
+import { ExchangeRateRepository } from '@/exchange/application/ports/exchange-rate.repository';
+import { ExchangeRate } from '@/exchange/domain/exchange-rate';
 import { Injectable } from '@nestjs/common';
-import { ExchangeRateRepository } from 'exchange/application/ports/exchange-rate.repository';
 import { ExchangeRateEntity } from '../entities/exchange-rate.entity';
-import { ExchangeRate } from 'exchange/domain/exchange-rate';
 import { ExchangeRateMapper } from '../mappers/exchange-rate.mapper';
 
 @Injectable()

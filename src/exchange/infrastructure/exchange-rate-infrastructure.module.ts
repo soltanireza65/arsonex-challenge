@@ -1,7 +1,7 @@
+import { TDriver } from '@/common/types/driver.type';
 import { Module } from '@nestjs/common';
-import { TypeOrmExchangeRatePersistenceModule } from './persistence/typeorm/typeorm-persistence.module';
 import { InMemoryExchangeRatePersistenceModule } from './persistence/in-memory/in-memory-persistence.module';
-import { TDriver } from 'common/types/driver.type';
+import { TypeOrmExchangeRatePersistenceModule } from './persistence/typeorm/typeorm-persistence.module';
 
 @Module({})
 export class ExchangeRateInfrastructureModule {

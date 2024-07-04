@@ -1,6 +1,6 @@
+import { ExchangeRate } from '@/exchange/domain/exchange-rate';
 import { randomUUID } from 'crypto';
 import { ExchangeRateEntity } from '../entities/exchange-rate.entity';
-import { ExchangeRate } from 'exchange/domain/exchange-rate';
 
 export class ExchangeRateMapper {
   static toDomain(entity: ExchangeRateEntity) {

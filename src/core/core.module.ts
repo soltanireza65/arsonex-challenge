@@ -1,7 +1,7 @@
+import { IApplicationBootstrapOptions } from '@/common/interfaces/application-bootstrap-option.interface';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { IApplicationBootstrapOptions } from 'common/interfaces/application-bootstrap-option.interface';
 import * as Joi from 'joi';
 
 @Module({})

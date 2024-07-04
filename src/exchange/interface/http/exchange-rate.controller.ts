@@ -1,14 +1,14 @@
+import { RateIRRToUSDQuery } from '@/exchange/application/queries/rate/rate-irr-to-usd.query';
+import { ExchangeRateService } from '@/exchange/application/services/exchange-rate.service';
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { RateIRRToUSDQuery } from 'exchange/application/queries/rate/rate-irr-to-usd.query';
-import { ExchangeRateService } from 'exchange/application/services/exchange-rate.service';
 import { RateCryptoTyCrypto } from './dto/rate/rate-crypto-to-crypto.dto';
 import { RateEURToCrypto } from './dto/rate/rate-eur-to-crypto.dto';
 import { RateIRRToUSD } from './dto/rate/rate-irr-to-usd.dto';
 import { RateUSDToFiat } from './dto/rate/rate-usd-to-fiat.dto';
 
 @ApiTags('exchange-rate')
-@Controller('exchange/rate')
+@Controller('@/exchange/rate')
 export class ExchangeRateController {
   constructor(private readonly exchangeRateService: ExchangeRateService) {}
 

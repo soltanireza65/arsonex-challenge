@@ -1,13 +1,13 @@
+import { ExchangeConvertService } from '@/exchange/application/services/exchange-convert.service';
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { ExchangeConvertService } from 'exchange/application/services/exchange-convert.service';
 import { ConvertCryptoTyCrypto } from './dto/convert/convert-crypto-to-crypto.dto';
 import { ConvertEURToCrypto } from './dto/convert/convert-eur-to-crypto.dto';
 import { ConvertIRRToUSD } from './dto/convert/convert-irr-to-usd.dto';
 import { ConvertUSDToFiat } from './dto/convert/convert-usd-to-fiat.dto';
 
 @ApiTags('exchange-convertion')
-@Controller('exchange/convert')
+@Controller('@/exchange/convert')
 export class ExchangeConvertionController {
   constructor(private readonly service: ExchangeConvertService) {}
 

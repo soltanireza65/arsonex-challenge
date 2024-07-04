@@ -1,7 +1,7 @@
+import { ExchangeRateProvider } from '@/exchange/application/ports/exchange-rate.provider';
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ExchangeRateProvider } from 'exchange/application/ports/exchange-rate.provider';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable()

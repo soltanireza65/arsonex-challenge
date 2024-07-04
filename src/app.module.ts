@@ -1,8 +1,8 @@
+import { IApplicationBootstrapOptions } from '@/common/interfaces/application-bootstrap-option.interface';
+import { CoreModule } from '@/core/core.module';
+import { ExchangeRateInfrastructureModule } from '@/exchange/infrastructure/exchange-rate-infrastructure.module';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { IApplicationBootstrapOptions } from 'common/interfaces/application-bootstrap-option.interface';
-import { CoreModule } from 'core/core.module';
-import { ExchangeRateInfrastructureModule } from 'exchange/infrastructure/exchange-rate-infrastructure.module';
 import { ExchangeModule } from './exchange/exchange.module';
 
 @Module({
