@@ -3,9 +3,10 @@ import { ExchangeModule } from './exchange/exchange.module';
 import { IApplicationBootstrapOptions } from 'common/interfaces/application-bootstrap-option.interface';
 import { CoreModule } from 'core/core.module';
 import { ExchangeRateInfrastructureModule } from 'exchange/infrastructure/exchange-rate-infrastructure.module';
+import { CqrsModule } from '@nestjs/cqrs';
 
 @Module({
-  imports: [ExchangeModule],
+  imports: [CqrsModule.forRoot()],
   controllers: [],
   providers: [],
 })
