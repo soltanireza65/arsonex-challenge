@@ -1,0 +1,45 @@
+## exchange/rate endpoints
+
+GET /api/exchange/rate/get-all-rates
+Host: localhost:8000
+
+###
+GET /api/exchange/rate/irr-to-usd
+Host: localhost:8000
+
+###
+
+GET /api/exchange/rate/usd-to-other?to=EUR
+Host: localhost:8000
+
+###
+GET /api/exchange/rate/crypto-to-crypto?from=BTC&to=USDT
+Host: localhost:8000
+
+###
+GET /api/exchange/rate/eur-to-crypto?to=USDT
+Host: localhost:8000
+
+###
+
+## exchange/convert endpoints
+
+###
+GET /api/exchange/convert/irr-to-usd?amount=100000
+Host: localhost:8000
+
+###
+
+GET /api/exchange/convert/usd-to-other?to=EUR&amount=100000
+Host: localhost:8000
+
+###
+GET /api/exchange/convert/crypto-to-crypto?from=BTC&to=USDT&amount=100000
+Host: localhost:8000
+
+###
+GET /api/exchange/convert/eur-to-crypto?to=USDT&amount=10
+Host: localhost:8000
+
+###
+
