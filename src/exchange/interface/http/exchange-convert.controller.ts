@@ -7,7 +7,7 @@ import { ConvertIRRToUSD } from './dto/convert/convert-irr-to-usd.dto';
 import { ConvertUSDToFiat } from './dto/convert/convert-usd-to-fiat.dto';
 
 @ApiTags('exchange-convertion')
-@Controller('@/exchange/convert')
+@Controller('exchange/convert')
 export class ExchangeConvertionController {
   constructor(private readonly service: ExchangeConvertService) {}
 

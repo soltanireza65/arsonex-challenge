@@ -8,7 +8,7 @@ import { RateIRRToUSD } from './dto/rate/rate-irr-to-usd.dto';
 import { RateUSDToFiat } from './dto/rate/rate-usd-to-fiat.dto';
 
 @ApiTags('exchange-rate')
-@Controller('@/exchange/rate')
+@Controller('exchange/rate')
 export class ExchangeRateController {
   constructor(private readonly exchangeRateService: ExchangeRateService) {}
 
