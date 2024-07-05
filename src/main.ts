@@ -9,6 +9,8 @@ async function bootstrap() {
   const app = await NestFactory.create(
     AppModule.register({ driver: 'typeorm' }),
   );
+  
+  app.setGlobalPrefix('api');
 
 
   const srv = app.get<ConfigService>(ConfigService);
@@ -19,7 +21,6 @@ async function bootstrap() {
   app.useGlobalPipes();
 
   app.useGlobalFilters(new AllExceptionsFilter());
-
   await app.listen(PORT);
 }
 bootstrap();
