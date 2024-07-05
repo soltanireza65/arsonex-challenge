@@ -37,6 +37,17 @@ or
 pnpm test
 ```
 
+
+## Ci/CD
+- gitlab-ci
+- obviously its not working now:
+- required tools:
+  - kubectl
+  - kubernetes cluster
+  - gitlab-ci (move repo to gitlab)
+  - ci base image with kubeConfig initialized
+  
+
 ## Todo
 - proper response codes
 - proper error handling
