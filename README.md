@@ -20,7 +20,7 @@ docker-compose up --build
 ## http endpoints
 
 
-or you can use [requests.http](https://github.com/soltanireza65/daal-challenge/blob/main/requests.http)
+or you can use [requests.http](https://github.com/soltanireza65/arsonex-challenge/blob/main/requests.http)
 
 ## Database
 - postgresql
