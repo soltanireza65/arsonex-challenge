@@ -33,7 +33,7 @@ export class CoreModule {
                 password: configService.get<string>('POSTGRES_PASSWORD'),
                 username: configService.get<string>('POSTGRES_USER'),
                 autoLoadEntities: true,
-                synchronize: true,
+                synchronize: configService.get<boolean>('POSTGRES_SYNCHRONIZE'),
               };
             },
             inject: [ConfigService],

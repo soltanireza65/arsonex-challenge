@@ -25,6 +25,11 @@ or you can use [requests.http](https://github.com/soltanireza65/arsonex-challeng
 ## Database
 - postgresql
 
+## Generate migrations
+```bash
+pnpm run typeorm migration:generate migrations/<migration_name> -d typeOrm.config.ts
+```
+
 ## Test
 
 ```bash
