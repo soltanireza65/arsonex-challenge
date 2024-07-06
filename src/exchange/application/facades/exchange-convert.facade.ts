@@ -6,7 +6,7 @@ import { ConvertIRRToUSDQuery } from '../queries/convert/convert-irr-to-usd.quer
 import { ConvertUSDToFiatQuery } from '../queries/convert/convert-usd-to-fiat.query';
 
 @Injectable()
-export class ExchangeConvertService {
+export class ExchangeConvertFacade {
   constructor(private readonly queryBus: QueryBus) {}
 
   async convertIRRToUSD(query: ConvertIRRToUSDQuery): Promise<number> {

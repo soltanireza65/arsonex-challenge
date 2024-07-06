@@ -1,5 +1,5 @@
+import { ExchangeRateFacade } from '@/exchange/application/facades/exchange-rate.facade';
 import { RateIRRToUSDQuery } from '@/exchange/application/queries/rate/rate-irr-to-usd.query';
-import { ExchangeRateService } from '@/exchange/application/services/exchange-rate.service';
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { RateCryptoTyCrypto } from './dto/rate/rate-crypto-to-crypto.dto';
@@ -10,38 +10,38 @@ import { RateUSDToFiat } from './dto/rate/rate-usd-to-fiat.dto';
 @ApiTags('exchange-rate')
 @Controller('exchange/rate')
 export class ExchangeRateController {
-  constructor(private readonly exchangeRateService: ExchangeRateService) {}
+  constructor(private readonly facade: ExchangeRateFacade) {}
 
   @Get('get-all-rates')
   findAll() {
-    return this.exchangeRateService.findAll();
+    return this.facade.findAll();
   }
 
   @ApiOperation({ summary: 'Rate IRR to USD' })
   @ApiResponse({ status: 200, description: 'The conversion was successful.' })
   @Get('irr-to-usd')
   async rateIRRToUSD(@Query() args: RateIRRToUSD) {
-    return this.exchangeRateService.rateIRRToUSD(new RateIRRToUSDQuery());
+    return this.facade.rateIRRToUSD(new RateIRRToUSDQuery());
   }
 
   @ApiOperation({ summary: 'Rate USD to other Fiat currencies' })
   @ApiResponse({ status: 200, description: 'The conversion was successful.' })
   @Get('usd-to-other')
   async rateUSDToOther(@Query() args: RateUSDToFiat) {
-    return this.exchangeRateService.rateUSDToOther(args);
+    return this.facade.rateUSDToOther(args);
   }
 
   @ApiOperation({ summary: 'Rate Crypto to Crypto' })
   @ApiResponse({ status: 200, description: 'The conversion was successful.' })
   @Get('crypto-to-crypto')
   async rateCryptoToCrypto(@Query() args: RateCryptoTyCrypto) {
-    return this.exchangeRateService.rateCryptoToCrypto(args);
+    return this.facade.rateCryptoToCrypto(args);
   }
 
   @ApiOperation({ summary: 'Rate EUR to Crypto' })
   @ApiResponse({ status: 200, description: 'The conversion was successful.' })
   @Get('eur-to-crypto')
   async rateEURToCrypto(@Query() args: RateEURToCrypto) {
-    return this.exchangeRateService.rateEURToCrypto(args);
+    return this.facade.rateEURToCrypto(args);
   }
 }

@@ -1,3 +1,5 @@
+import { ExchangeConvertFacade } from './facades/exchange-convert.facade';
+import { ExchangeRateFacade } from './facades/exchange-rate.facade';
 import {
   ProviderAProvider,
   ProviderBProvider,
@@ -12,12 +14,10 @@ import { RateCryptoTyCryptoQueryHandler } from './queries/rate/rate-crypto-to-cr
 import { RateEURToCryptoQueryHandler } from './queries/rate/rate-eur-to-crypto.query-handler';
 import { RateIRRToUSDQueryHandler } from './queries/rate/rate-irr-to-usd.query-handler';
 import { RateUSDToFiatQueryHandler } from './queries/rate/rate-usd-to-fiat.query-handler';
-import { ExchangeConvertService } from './services/exchange-convert.service';
-import { ExchangeRateService } from './services/exchange-rate.service';
 
-const ExchangeRateServices: any[] = [
-  ExchangeRateService,
-  ExchangeConvertService,
+const ExchangeRateFacades: any[] = [
+  ExchangeRateFacade,
+  ExchangeConvertFacade,
 ];
 const ExchangeRateProviders: any[] = [
   ProviderAProvider,
@@ -42,7 +42,7 @@ const ExchangeRateCommandHandlers: any[] = [];
 const ExchangeRateEventHandlers: any[] = [];
 
 export const ExchangeRateApplications = [
-  ...ExchangeRateServices,
+  ...ExchangeRateFacades,
   ...ExchangeRateProviders,
   ...ExchangeRateQueryHandlers,
   ...ExchangeRateCommandHandlers,

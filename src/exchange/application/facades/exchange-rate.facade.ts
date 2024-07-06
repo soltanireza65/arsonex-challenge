@@ -7,7 +7,7 @@ import { RateIRRToUSDQuery } from '../queries/rate/rate-irr-to-usd.query';
 import { RateUSDToFiatQuery } from '../queries/rate/rate-usd-to-fiat.query';
 
 @Injectable()
-export class ExchangeRateService {
+export class ExchangeRateFacade {
   constructor(private readonly queryBus: QueryBus) {}
 
   findAll() {
